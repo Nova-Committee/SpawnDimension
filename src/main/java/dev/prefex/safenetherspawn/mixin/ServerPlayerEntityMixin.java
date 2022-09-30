@@ -1,30 +1,19 @@
 package dev.prefex.safenetherspawn.mixin;
 
 import com.mojang.authlib.GameProfile;
-import com.mojang.datafixers.util.Either;
 import dev.prefex.safenetherspawn.util.SafeSpawn;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.network.ServerPlayerInteractionManager;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.tag.TagKey;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryEntryList;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
-import net.minecraft.world.gen.feature.StructureFeature;
 import org.apache.commons.lang3.NotImplementedException;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -34,12 +23,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
-import java.util.function.Function;
 
 @Mixin(ServerPlayerEntity.class)
 public abstract class ServerPlayerEntityMixin extends PlayerEntity {
@@ -112,14 +96,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 		if (world.getBlockState(getBlockPos()).getMaterial().isLiquid()){
 			this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 30));
 		}
-		/*else if (!world.getBlockState(getBlockPos()).isAir()||(world.getBlockState(getBlockPos().down()).isAir() && world.getBlockState(getBlockPos().down(2)).isAir())){
-			Registry<ConfiguredStructureFeature<?, ?>> registry = world.getRegistryManager().get(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY);
-
-			var pos = world.locateStructure(TagKey.of(registry.getKey(),new Identifier("minecraft:ruined_portal")),getBlockPos(), 100, false);
-			teleport(world,pos.getX(),getBlockY(),pos.getZ(),0,0);
-
-		}*/
-		//moveToWorld(world);
 	}
 
 	@Shadow
@@ -132,8 +108,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 	@Shadow @Final public ServerPlayerInteractionManager interactionManager;
 
 	@Shadow public abstract void teleport(ServerWorld targetWorld, double x, double y, double z, float yaw, float pitch);
-
-	@Shadow public abstract @Nullable BlockPos getSpawnPointPosition();
 
 	@Override
 	public boolean isSpectator() {
