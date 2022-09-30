@@ -10,8 +10,8 @@
     "leia"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://prefex.dev/",
+    "sources": "https://github.com/DcZipPL/SafeNetherSpawn"
   },
 
   "license": "MIT",
