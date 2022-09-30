@@ -3,8 +3,8 @@
   "id": "safenetherspawn",
   "version": "${version}",
 
-  "name": "Safen Nether Spawn",
-  "description": "Spawns player in nether safely.",
+  "name": "Safe Nether Spawn",
+  "description": "Spawns player in Nether safely.",
   "authors": [
     "Prefex",
     "leia"
