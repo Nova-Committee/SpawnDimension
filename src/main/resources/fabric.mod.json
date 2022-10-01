@@ -1,27 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "safenetherspawn",
+  "id": "spawn_dimension",
   "version": "${version}",
 
-  "name": "Safe Nether Spawn",
-  "description": "Spawns player in Nether safely.",
+  "name": "Spawn Dimension",
+  "description": "Spawns player in any dimensions safely. Fork of Safe Nether Spawn.",
   "authors": [
     "Prefex",
-    "leia"
+    "leia",
+    "pkstDev"
   ],
   "contact": {
-    "homepage": "https://prefex.dev/",
-    "sources": "https://github.com/DcZipPL/SafeNetherSpawn"
+    "sources": "https://github.com/Nova-Committee/SpawnDimension"
   },
 
   "license": "MIT",
-  "icon": "assets/safenetherspawn/icon.png",
+  "icon": "assets/spawn_dimension/icon.png",
 
   "environment": "*",
   "entrypoints": {
+    "main": [
+      "committee.nova.spawndimension.SpawnDimension"
+    ]
   },
   "mixins": [
-    "safenetherspawn.mixins.json"
+    "spawn_dimension.mixins.json"
   ],
 
   "depends": {
